@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-xs-9">
+		<h3> Edit Post</h3>
+		<%= form_for(@post) do |f| %>
+
+			<%= f.label :title %>
+			<%= f.text_field :title %><br />
+		
+			<%= f.label :author %>
+			<%= f.text_field :author %><br />
+		
+			<%= f.label :text %>
+			<%= f.text_area :text %><br />
+			
+			<%= f.submit "Save Post", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>

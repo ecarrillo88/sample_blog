@@ -1,0 +1,48 @@
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+
+$gray: #555;
+$lightGray: #999;
+$grayMediumLight: #eaeaea;
+$grayDarker: #222;
+
+body {
+	background-color: lightGray;
+}
+
+/* header */
+
+#logo {
+	float: left;
+	margin-right: 10px;
+	font-size: 1.7em;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: -1px;
+	padding-top: 9px;
+	font-weight: bold;
+	line-height: 1;
+	&:hover {
+		color: white;
+		text-decoration: none;
+	}
+}
+
+.container {
+	background-color: red;
+}
+
+.posts {
+	background-color: white;
+	float: left;
+	width: 50%;
+	margin: 45px auto;
+}
+
+.menu {
+	background-color: blue;
+	float: right;
+	width: 25%;
+	margin-top: 45px;
+}
