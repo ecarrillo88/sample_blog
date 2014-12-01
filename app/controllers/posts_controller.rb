@@ -10,12 +10,12 @@ class PostsController < ApplicationController
   def create
   	@post = Post.new(params[:post])
   	if @post.save
-			flash[:success] = "Post publicado!"
-			render 'show'
-		else
-			flash[:error] = "Buffffffffffffff!"
-			render 'new'
-		end
+		flash[:success] = "Post published!"
+		render 'show'
+	else
+		flash[:error] = "Buffffffffffffff"
+		render 'new'
+	end
   end
 
   def edit
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
   def update
   	@post = Post.find(params[:id])
   	if @post.update_attributes(params[:post])
-  		flash[:success] = "Profile updated"
+  		flash[:success] = "Post updated"
 		render 'show'
 	else
 		render 'edit'
