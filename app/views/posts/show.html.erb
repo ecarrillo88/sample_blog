@@ -1,29 +1,54 @@
 <div class="row">
-	<div class="col-xs-9">
-		<h2><%= @post.title %></h2>
-		<p>by <b><%= @post.author %></b> on <b><%= @post.created_at.to_formatted_s(:long) %></b> - 0 Comments</p>
-        <div class="row">
-        	<div class="col-xs-9">
-            	<p><%= @post.text %></p><br>
-            	<%= link_to 'Edit Post', edit_post_path(@post.id), class: "btn btn-default"%>
-                <%= button_to 'Delete Post', @post, method: :delete, class: "btn btn-default"%>
-           	</div>
-       	</div>
-       	<hr>
-       	<div class="row">
-        	<div class="col-xs-9">
-            	<h4>Leave a comment</h4>
-            	<%= form_tag("#", method: "post") do %>
-
-					<%= label_tag :user, "Name" %>
-					<%= text_field_tag :user %><br />
-		
-					<%= label_tag :text, "Comment" %>
-					<%= text_area_tag :text %><br />
-		
-					<%= submit_tag "Submit Comment", class: "btn btn-large btn-primary" %>
-				<% end %>
-           	</div>
-       	</div>
-	</div>
+  <div class="col-xs-9">
+    <h2><%= @post.title %></h2>
+    <p>by <b><%= @post.author %></b> on <b><%= @post.created_at.to_formatted_s(:long) %></b> - <%= link_to pluralize_phrase(@post.comments.length, "comment"), "#comments" %></p>
+    <div class="row">
+      <div class="col-xs-9">
+        <p><%= @post.text %></p><br>
+        <%= link_to 'Edit Post', edit_post_path(@post.id), class: "btn btn-default"%>
+        <%= button_to 'Delete Post', @post, method: :delete, class: "btn btn-default"%>
+      </div>
+    </div>
+    <hr>
+  </div>
 </div>
+
+<div class="row">
+  <div class="col-xs-9">
+    <h4>Leave a comment</h4>
+    <%= form_tag("/comments", method: :post) do %>
+
+      <%= hidden_field_tag 'id', @post.id %>
+
+      <%= label_tag :user, "Name" %>
+      <%= text_field_tag :user %><br />
+    
+      <%= label_tag :text, "Comment" %>
+      <%= text_area_tag :text %><br />
+
+      <%= submit_tag "Submit Comment", class: "btn btn-large btn-primary" %>
+      <br><br><br>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-9">
+    <a name="comments"></a>
+    <h4>Comments</h4>
+    <% if !@post.comments.any? %>
+      <br>
+      <p>No comments :(</p>
+      <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <% @post.comments.reverse.each do |comment| %>
+    <div class="col-xs-9 comment">
+      <p><b><%= comment.user %></b></p>
+      <p><%= comment.text %></p>
+    </div>
+  <% end %>
+</div>
+
