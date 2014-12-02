@@ -65,5 +65,7 @@ module SampleBlog
     config.assets.initialize_on_precompile = false
 
     config.assets.compile = true
+
+    config.assets.precompile += %w( bootstrap.css )
   end
 end
