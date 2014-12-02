@@ -11,10 +11,10 @@ development:
 
   adapter: postgresql
   encoding: unicode
-  database: myapp_development
+  database: d90n6a879v9hnm
   pool: 5
-  username: myapp
-  password:
+  username: wyjfagzqocsytu
+  password: lyPuVJAUPIT6Q77lH7Cm1TSYoc
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,10 +27,10 @@ test:
 
   adapter: postgresql
   encoding: unicode
-  database: myapp_test
+  database: d90n6a879v9hnm
   pool: 5
-  username: myapp
-  password:
+  username: wyjfagzqocsytu
+  password: lyPuVJAUPIT6Q77lH7Cm1TSYoc
 
 production:
 #  adapter: sqlite3
@@ -40,7 +40,7 @@ production:
 
   adapter: postgresql
   encoding: unicode
-  database: myapp_production
+  database: d90n6a879v9hnm
   pool: 5
-  username: myapp
-  password:
+  username: wyjfagzqocsytu
+  password: lyPuVJAUPIT6Q77lH7Cm1TSYoc
