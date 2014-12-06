@@ -1,7 +1,8 @@
 SampleBlog::Application.routes.draw do
-  
+
   resources :posts
   resources :comments
+  resources :users
 
   root to: 'static_pages#home'
 

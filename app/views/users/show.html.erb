@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-xs-9">
+    <h3>User Profile</h3>
+    <p><b>Name:</b> <%= @user.name %></p>
+    <p><b>Email:</b> <%= @user.email %></p>
+    <div class="btn-group">
+      <%= button_to 'Edit my account', @user, method: :delete, class: "btn btn-default"%>
+      <%= button_to 'Delete my account', @user, method: :delete, class: "btn btn-danger"%>
+      </div>
+  </div>
+</div>
