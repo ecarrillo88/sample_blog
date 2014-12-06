@@ -13,7 +13,7 @@ class PostsController < ApplicationController
       flash[:success] = "Post published!"
       render 'show'
     else
-      flash[:error] = "Buffffffffffffff"
+      flash[:error] = "Something has gone wrong :("
       render 'new'
     end
   end
