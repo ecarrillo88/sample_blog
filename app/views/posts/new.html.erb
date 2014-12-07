@@ -7,7 +7,7 @@
       <%= f.text_field :title %><br />
 
       <%= f.label :author %>
-      <%= f.text_field :author %><br />
+      <%= f.text_field :author, value: current_user.name, disabled: :true %><br />
 
       <%= f.label :text %>
       <%= f.text_area :text %><br />
