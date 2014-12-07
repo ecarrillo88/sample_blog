@@ -5,13 +5,13 @@
       <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :title %>
-      <%= f.text_field :title %><br />
+      <%= f.text_field :title, class: "form-control" %><br />
 
       <%= f.label :author %>
       <%= f.text_field :author, value: current_user.name, disabled: :true %><br />
 
       <%= f.label :text %>
-      <%= f.text_area :text %><br />
+      <%= f.text_area :text, class: "form-control" %><br />
 
       <%= f.submit "Create Post", class: "btn btn-large btn-primary" %>
     <% end %>
