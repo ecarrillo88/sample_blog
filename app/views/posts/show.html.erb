@@ -6,7 +6,7 @@
       <div class="col-xs-9">
         <p><%= @post.text %></p><br>
         <%= link_to 'Edit Post', edit_post_path(@post.id), class: "btn btn-default"%>
-        <%= button_to 'Delete Post', @post, method: :delete, class: "btn btn-default"%>
+        <%= link_to 'Delete Post', "#{post_path(@post.id)}/delete", class: "btn btn-default"%>
       </div>
     </div>
     <hr>
