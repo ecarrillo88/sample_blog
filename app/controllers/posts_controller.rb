@@ -25,6 +25,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @comment = Comment.new
     if @post.update_attributes(params[:post])
       flash.now[:success] = "The post has been updated"
       render 'show'
