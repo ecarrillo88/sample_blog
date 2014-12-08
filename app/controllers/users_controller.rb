@@ -39,4 +39,10 @@ class UsersController < ApplicationController
     flash[:success] = "The user has been deleted :("
     redirect_to root_path
   end
+
+  def posts_list
+    @user = User.find(params[:id])
+    @posts = @user.posts
+    render 'posts_list'
+  end
 end

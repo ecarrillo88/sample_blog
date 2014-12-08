@@ -11,6 +11,7 @@ SampleBlog::Application.routes.draw do
   match '/signout', to: 'sessions#destroy'
   match '/users/:id/delete', to: 'users#destroy'
   match '/posts/:id/delete', to: 'posts#destroy'
+  match '/users/:id/posts_list', to: 'users#posts_list'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -27,6 +27,12 @@ footer {
   }
 }
 
+.border_bottom {
+  td{ 
+    border-bottom: 1px solid #B4B5B0; 
+  }
+}
+
 #error_explanation {
   color: #f00;
   ul {
