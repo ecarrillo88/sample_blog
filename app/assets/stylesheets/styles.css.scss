@@ -5,15 +5,16 @@
 }
 
 input[type=text], input[type=password], textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  padding: 10px;
-  height: auto;
-  margin-bottom: 15px;
+  border:1px solid #bbb;
+  width:100%;
+  padding:10px;
+  height:auto;
+  margin-bottom:15px;
 }
 
 body {
   padding-top:50px;
+  padding-bottom:120px;
 }
 
 footer {
@@ -22,8 +23,8 @@ footer {
   padding-bottom:30px;
   background-color:#ededed;
   p {
-    font-size: 11px;
-    text-align: center;
+    font-size:11px;
+    text-align:center;
   }
 }
 
@@ -34,7 +35,7 @@ footer {
 }
 
 #error_explanation {
-  color: #f00;
+  color:#f00;
   ul {
     list-style: none;
     margin: 0 0 18px 0;
@@ -48,8 +49,8 @@ footer {
 #masthead {
   min-height:199px;
   h1 {
-    font-size: 55px;
-    line-height: 1;
+    font-size:55px;
+    line-height:1;
     margin-top:50px;
   }
   .well {
@@ -89,7 +90,7 @@ a {
 }
 
 .dropdown-menu {
-  min-width: 250px;
+  min-width:250px;
 }
 
 .panel {
@@ -102,9 +103,9 @@ a {
 }
 
 .comment {
-  background-color: #ededed;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  background-color:#ededed;
+  border-radius:10px;
+  margin-bottom:10px;
 }
 
 .thumbnail {
@@ -130,7 +131,7 @@ a {
 .label-float{
   margin:0 auto;
   position: absolute;
-  top: 0;
+  top:0;
   z-index: 1;
   width:100%;
   opacity:.9;
