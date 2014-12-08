@@ -5,8 +5,10 @@
     <div class="row">
       <div class="col-xs-9">
         <p><%= @post.text %></p><br>
+        <% if (!current_user.nil? && @post.user_id == current_user.id) %>
         <%= link_to 'Edit Post', edit_post_path(@post.id), class: "btn btn-default"%>
         <%= link_to 'Delete Post', "#{post_path(@post.id)}/delete", class: "btn btn-default"%>
+        <% end %>
       </div>
     </div>
     <hr>
