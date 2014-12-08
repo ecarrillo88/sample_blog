@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @comment = Comment.new
     if @post.save
-      flash[:success] = "Post published!"
+      flash.now[:success] = "The post has been published!"
       render 'show'
     else
       render 'new'
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
-      flash[:success] = "Post updated"
+      flash.now[:success] = "The post has been updated"
       render 'show'
     else
       render 'edit'
@@ -36,6 +36,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+    flash[:danger] = "The post has been deleted"
     redirect_to root_path
   end
 end
