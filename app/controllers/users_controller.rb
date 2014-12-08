@@ -17,10 +17,25 @@ class UsersController < ApplicationController
   	end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      sign_in @user
+      flash.now[:success] = "The user has been updated!"
+      render 'show'
+    else
+      render 'new'
+    end
+  end
+
   def destroy
   	@user = User.find(params[:id])
   	@user.destroy
-    flash[:success] = "User deleted"
+    flash[:success] = "The user has been deleted :("
     redirect_to root_path
   end
 end
