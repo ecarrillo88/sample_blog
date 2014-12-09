@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-9">
       <h2><%= link_to post.title, post_path(post.id) %></h2>
-      <p>by <b><%= post.author %></b> on <b><%= post.created_at.to_formatted_s(:long) %></b> - <%= link_to pluralize_phrase(post.comments.length, "comment"), "#{post_path(post.id)}#comments" %></p>
+      <p>by <b><%= post.author %></b> on <b><%= post.created_at.to_formatted_s(:long) %></b> - <%= link_to pluralize(post.comments.length, "comment"), "#{post_path(post.id)}#comments" %></p>
       <div class="row">
         <div class="col-xs-9">
           <p><%= post.text.truncate(600) %></p>
