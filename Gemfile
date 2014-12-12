@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '3.0.3'
 gem 'bcrypt-ruby', '3.0.1' # To use ActiveModel has_secure_password
+gem 'cloudinary'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
