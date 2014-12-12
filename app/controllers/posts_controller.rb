@@ -1,7 +1,10 @@
+require 'post_presenter.rb'
+
 class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
+    @presenter = PostPresenter.new(view_context, @post, current_user)
   end
 
   def new
@@ -26,6 +29,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @comment = Comment.new
+    @presenter = PostPresenter.new(view_context, @post, current_user)
     if @post.update_attributes(params[:post])
       flash.now[:success] = "The post has been updated"
       render 'show'
