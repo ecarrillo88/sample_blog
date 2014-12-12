@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: sample-blog
+  api_key: '512356351448586'
+  api_secret: Xfz20OURz3jfmbw7ArlrYK9rlNc
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: sample-blog
+  api_key: '512356351448586'
+  api_secret: Xfz20OURz3jfmbw7ArlrYK9rlNc
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: sample-blog
+  api_key: '512356351448586'
+  api_secret: Xfz20OURz3jfmbw7ArlrYK9rlNc
+  enhance_image_tag: true
+  static_image_support: false
