@@ -20,6 +20,6 @@ class PostPresenter
   end
 
   def no_comments_message
-    "No comments :(" if !@post.comments.any?
+    "No comments :(" if @post.comments.empty?
   end
 end
