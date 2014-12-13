@@ -5,13 +5,14 @@ SampleBlog::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
-  root to: 'static_pages#home'
-  match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy'
-  match '/users/:id/delete', to: 'users#destroy'
-  match '/posts/:id/delete', to: 'posts#destroy'
-  match '/users/:id/posts_list', to: 'users#posts_list'
+  root                             to: 'static_pages#home'
+  match '/signup',                 to: 'users#new'
+  match '/signin',                 to: 'sessions#new'
+  match '/signout',                to: 'sessions#destroy'
+  match '/users/:id/delete',       to: 'users#destroy'
+  match '/posts/:id/delete',       to: 'posts#destroy'
+  match '/users/:id/posts_list',   to: 'users#posts_list'
+  match '/users/:id/upload_image', to: 'users#upload_image'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

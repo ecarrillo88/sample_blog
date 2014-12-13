@@ -1,6 +1,7 @@
 <div class="row">
-  <div class="col-xs-9">
-    <h3>Edit user</h3>
+<h3>Edit user</h3>
+  <div class="col-xs-7">
+    
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
@@ -18,5 +19,16 @@
 
       <%= f.submit "Edit my account", class: "btn btn-large btn-primary" %>
     <% end %>
+  </div>
+  <div class="col-xs-5">
+    <div class="profile-image">
+      <%= profile_image(@user) %>
+      <%= form_tag("#{user_path}/upload_image", multipart: :true) do %>
+        <br>
+        <%= file_field_tag :image %><br>
+
+        <%= submit_tag "Upload image", class: "btn btn-large btn-primary" %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -1,8 +1,9 @@
 <div class="row">
   <div class="col-xs-9">
-    <h3>User Profile</h3>
+    <h3>User Profile</h3><br>
+    <%= profile_image(@user) %><br><br>
     <p><b>Name:</b> <%= @user.name %></p>
-    <p><b>Email:</b> <%= @user.email %></p>
+    <p><b>Email:</b> <%= @user.email %></p><br>
     <%= link_to 'Edit my account', edit_user_path(@user.id), method: :get, class: "btn btn-primary" %>
     <%= link_to 'Delete my account', "#{user_path(@user.id)}/delete", class: "btn btn-danger" %>
   </div>
