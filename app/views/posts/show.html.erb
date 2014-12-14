@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-9">
+  <div class="col-xs-10">
     <h2><%= @post.title %></h2>
     <p>by <b><%= @post.author %></b> on <b><%= @post.created_at.to_formatted_s(:long) %></b> - <%= link_to pluralize(@post.comments.length, "comment"), "#comments" %></p>
     <div class="row">
@@ -42,12 +42,16 @@
   </div>
 </div>
 
-<div class="row">
+<div class="col-xs-10">
   <% @post.comments.reverse.each do |comment| %>
-    <div class="col-xs-9 comment">
+  <div class="row comment">
+    <div class="col-xs-1">
+      <%= image_tag("no_photo.gif", width: 50, height: 50) %>
+    </div>
+    <div class="col-xs-11">
       <p><b><%= comment.user %></b></p>
       <p><%= comment.text %></p>
     </div>
+  </div>
   <% end %>
 </div>
-
