@@ -13,8 +13,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post])
-    @comment = Comment.new
     if @post.save
+      @comment = Comment.new
+      @presenter = PostPresenter.new(view_context, @post, current_user)
       flash.now[:success] = "The post has been published!"
       render 'show'
     else
