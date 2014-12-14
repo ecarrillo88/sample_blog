@@ -6,6 +6,9 @@ This is a basic sample blog programmed with ruby on rails 3 and Bootstrap. It's 
 2. Registered users can create posts
 3. Everyone can comment on blog posts
 
+== URL
+https://quiet-hamlet-4307.herokuapp.com/
+
 == Use license
 
 This software does not have any license, feel free to use, modify, share... or anything you can think of ;)
