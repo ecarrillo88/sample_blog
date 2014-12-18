@@ -16,8 +16,8 @@ class PostsController < ApplicationController
     if @post.save
       @comment = Comment.new
       @presenter = PostPresenter.new(view_context, @post, current_user)
-      flash.now[:success] = "The post has been published!"
-      render 'show'
+      flash[:success] = "The post has been published!"
+      redirect_to @post
     else
       render 'new'
     end
@@ -32,8 +32,8 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @presenter = PostPresenter.new(view_context, @post, current_user)
     if @post.update_attributes(params[:post])
-      flash.now[:success] = "The post has been updated"
-      render 'show'
+      flash[:success] = "The post has been updated"
+      redirect_to @post
     else
       render 'edit'
     end

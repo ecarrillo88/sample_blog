@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   	if @user.save
       sign_in @user
       flash[:success] = "Welcome to the Sample Blog!"
-      render 'show'
+      redirect_to profile_path
     else
   	  render 'new'
   	end
@@ -26,10 +26,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       sign_in @user
-      flash.now[:success] = "The user has been updated"
-      render 'show'
+      flash[:success] = "The user has been updated"
+      redirect_to @user
     else
-      render 'new'
+      render 'edit'
     end
   end
 
@@ -43,7 +43,6 @@ class UsersController < ApplicationController
   def posts_list
     @user = User.find(params[:id])
     @posts = @user.posts
-    render 'posts_list'
   end
 
   # Upload image to Cloudinary
@@ -54,11 +53,10 @@ class UsersController < ApplicationController
       image_hash = Cloudinary::Uploader.upload(params[:image])
       @user.update_attribute(:image_id, image_hash['public_id'])
       sign_in @user
-      flash.now[:success] = "The profile image has been updated"
-      render 'edit'
+      flash[:success] = "The profile image has been updated"
     else
-      flash.now[:danger] = "Select an image before uploading"
-      render 'edit'
+      flash[:danger] = "Select an image before uploading"
     end
+    redirect_to edit_user_path
   end
 end
