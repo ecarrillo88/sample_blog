@@ -22,7 +22,8 @@
   </div>
   <div class="col-xs-5">
     <div class="profile-image">
-      <%= profile_image(@user) %>
+      <% url = @imageManager.get_image_url(@user.image_id) %>
+      <%= image_tag(url, width: 120, height: 120) %>
       <%= form_tag("#{user_path}/upload_image", multipart: :true) do %>
         <br>
         <%= file_field_tag :image %><br>

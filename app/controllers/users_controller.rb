@@ -1,6 +1,9 @@
+require 'image_manager.rb'
+
 class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
+    @imageManager = ImageManager.new
   end
 
   def new
@@ -20,6 +23,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @imageManager = ImageManager.new
   end
 
   def update
@@ -49,8 +53,9 @@ class UsersController < ApplicationController
   def upload_image
     @user = User.find(params[:id])
     if !params[:image].nil?
-      Cloudinary::Api.delete_resources(@user.image_id) unless @user.image_id.nil?
-      image_hash = Cloudinary::Uploader.upload(params[:image])
+      imageManager = ImageManager.new
+      imageManager.delete_image(@user.image_id) unless @user.image_id.nil?
+      image_hash = imageManager.upload_image(params[:image])
       @user.update_attribute(:image_id, image_hash['public_id'])
       sign_in @user
       flash[:success] = "The profile image has been updated"
