@@ -1,13 +1,12 @@
-<header class="navbar navbar-default navbar-fixed-top" role="banner">
+<header class="navbar navbar-inverse navbar-fixed-top" role="banner">
   <div class="container">
     <div class="navbar-header">
       <%= link_to "Sample Blog", root_path, class: "navbar-brand"%>
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav navbar-left">
-      <% if signed_in? %>
-        <li><%= link_to "New Post", new_post_path %></li>
-      <% end %>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       <% if signed_in? %>
@@ -22,9 +21,6 @@
             <li><%= link_to "Sign out", signout_path, method: :delete %></li>
           </ul>
         </li>
-      <% else %>
-        <li><%= link_to "Sign In", signin_path %></li>
-        <li><%= link_to "Sign Up", signup_path %></li>
       <% end %>
       </ul>
     </nav>

@@ -20,27 +20,88 @@
 <%= render 'layouts/header' %>
 <div class="container">
   <div class="row">
-    <div class="col-md-12"> 
-      <div class="panel">
-        <div class="panel-body">
-          <div class="row">    
-            <br>
-            <div class="col-md-10 col-sm-9">
+    <div class="col-md-8">
 
-              <% flash.each do |key, value| %>
-                <div class="alert alert-<%= key %>"><%= value %></div>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+              
+      <%= yield %>
+              
+      <% if params[:action] == 'home' %>
+        <!-- Pager -->
+        <ul class="pager">
+          <li class="previous">
+            <%= link_to("&larr; Older".html_safe, '#') %>
+          </li>
+          <li class="next">
+            <%= link_to("Newer &rarr;".html_safe, '#') %>
+          </li>
+        </ul>
+      <% end %>
+   	</div>
+    <!-- Blog Sidebar Widgets Column -->
+    <div class="col-md-4">
+      <!-- Blog Search Well -->
+      <div class="well">
+        <h4>Blog Search</h4>
+        <div class="input-group">
+          <input type="text" class="form-control">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" style="height:42px">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+          <!-- /.input-group -->
+      </div>
+      <!-- Blog Menu Well -->
+      <div class="well">
+        <h4>Main Menu</h4>
+        <div class="row">
+          <div class="col-lg-6">
+            <ul class="list-unstyled">
+              <li><%= link_to("Home", root_path) %></li>
+              <% if signed_in? %>
+              <li><%= link_to("New post", new_post_path) %></li>
               <% end %>
-              
-              <%= yield %>
-              
-            </div>
+              <% unless signed_in? %>
+              <li><%= link_to "Sign In", signin_path %></li>
+              <li><%= link_to "Sign Up", signup_path %></li>
+              <% end %>
+            </ul>
           </div>
-          <% if params[:action] == 'home' %>
-            <a href="#" class="btn btn-primary pull-right btnNext">More posts</a>
-          <% end %>
         </div>
       </div>
-   	</div>
+      <!-- Blog Categories Well -->
+      <div class="well">
+        <h4>Blog Categories</h4>
+        <div class="row">
+          <div class="col-lg-6">
+            <ul class="list-unstyled">
+              <li><a href="#">Category Name</a></li>
+              <li><a href="#">Category Name</a></li>
+              <li><a href="#">Category Name</a></li>
+            </ul>
+          </div>
+          <!-- /.col-lg-6 -->
+          <div class="col-lg-6">
+            <ul class="list-unstyled">
+              <li><a href="#">Category Name</a></li>
+              <li><a href="#">Category Name</a></li>
+              <li><a href="#">Category Name</a></li>
+            </ul>
+          </div>
+        <!-- /.col-lg-6 -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- Side Widget Well -->
+      <div class="well">
+        <h4>Side Widget Well</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+      </div>
+    </div>
   </div>
 </div>
 <%= render 'layouts/footer' %>

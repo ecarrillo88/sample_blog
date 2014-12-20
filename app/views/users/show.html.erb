@@ -1,12 +1,8 @@
-<div class="row">
-  <div class="col-xs-9">
-    <h3>User Profile</h3><br>
-    <% url = @imageManager.get_image_url(@user.image_id) %>
-    <%= image_tag(url, width: 120, height: 120) %>
-    <br><br>
-    <p><b>Name:</b> <%= @user.name %></p>
-    <p><b>Email:</b> <%= @user.email %></p><br>
-    <%= link_to 'Edit my account', edit_user_path(@user.id), method: :get, class: "btn btn-primary" %>
-    <%= link_to 'Delete my account', "#{user_path(@user.id)}/delete", class: "btn btn-danger" %>
-  </div>
-</div>
+<h2>User Profile</h2><br>
+<% url = @imageManager.get_image_url(@user.image_id) %>
+<%= image_tag(url, width: 120, height: 120) %>
+<br><br>
+<p><b>Name:</b> <%= @user.name %></p>
+<p><b>Email:</b> <%= @user.email %></p><br>
+<%= link_to 'Edit my account', edit_user_path(@user.id), method: :get, class: "btn btn-primary" %>
+<%= link_to 'Delete my account', "#{user_path(@user.id)}/delete", class: "btn btn-danger" %>

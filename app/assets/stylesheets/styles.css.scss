@@ -13,14 +13,13 @@ input[type=text], input[type=password], textarea, select, .uneditable-input {
 }
 
 body {
-  padding-top:50px;
-  padding-bottom:120px;
+  padding-top:70px;
 }
 
 footer {
   margin-top:40px;
-  padding-top:40px;
-  padding-bottom:30px;
+  padding-top:35px;
+  padding-bottom:35px;
   background-color:#ededed;
   p {
     font-size:11px;
@@ -74,15 +73,6 @@ footer {
   display:block;
 }
 
-a {
-  color:#5e5e5e;
-  text-decoration:none;
-  &:hover {
-    color:#223344;
-    text-decoration:none;
-  }
-}
-
 .icon-bar {
   background-color:#fff;
 }
@@ -95,15 +85,6 @@ a {
 
 .dropdown-menu {
   min-width:250px;
-}
-
-.panel {
-  border-color:transparent;
-  border-radius:0;
-  .lead {
-    overflow:hidden;
-    height:90px;
-  }
 }
 
 .comment {

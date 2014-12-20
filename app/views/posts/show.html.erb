@@ -1,57 +1,54 @@
-<div class="row">
-  <div class="col-xs-10">
-    <h2><%= @post.title %></h2>
-    <p>by <b><%= last_user_name(@post) %></b> on <b><%= @post.created_at.to_formatted_s(:long) %></b> - <%= link_to pluralize(@post.comments.length, "comment"), "#comments" %></p>
-    <div class="row">
-      <div class="col-xs-12">
-        <p><%= @post.text %></p><br>
-        <%= @presenter.display_edit_button %>
-        <%= @presenter.display_delete_button %>
-      </div>
-    </div>
-    <hr>
-  </div>
-</div>
+<!-- Blog Post -->
+<h2><%= @post.title %></h2>
+<p class="lead">by <%= link_to(last_user_name(@post), "#") %></p> 
+<p><span class="glyphicon glyphicon-time"></span> Posted on <%= @post.created_at.to_formatted_s(:long) %> - <%= link_to pluralize(@post.comments.length, "comment"), "#comments" %></p>
+<hr>
+<p><%= @post.text %></p>
 
-<div class="row">
-  <div class="col-xs-9">
-    <h4>Leave a comment</h4>
-    <%= form_for(@comment) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+<hr>
 
-      <%= f.hidden_field 'id', value: @post.id %>
+<%= @presenter.display_edit_button %>
+<%= @presenter.display_delete_button %><br><br>
 
-      <%= f.label :user, 'Name' %>
-      <%= f.text_field :user, class: "form-control" %><br />
+<!-- Blog Comments -->
+
+<!-- Comments Form -->
+<div class="well">
+  <h4>Leave a comment</h4>
+  <%= form_for(@comment) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.hidden_field 'id', value: @post.id %>
+
+    <%= f.label :user, 'Name' %>
+    <%= f.text_field :user, class: "form-control" %><br />
     
-      <%= f.label :text, 'Comment' %>
-      <%= f.text_area :text, rows: '5', class: "form-control" %><br />
+    <%= f.label :text, 'Comment' %>
+    <%= f.text_area :text, rows: '5', class: "form-control" %><br />
 
-      <%= f.submit "Submit Comment", class: "btn btn-large btn-primary" %>
-      <br><br><br>
-    <% end %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-9">
-    <a name="comments"></a>
-    <h4>Comments</h4>
-      <br>
-      <p><%= @presenter.no_comments_message %></p>
-  </div>
-</div>
-
-<div class="col-xs-10">
-  <% @post.comments.reverse.each do |comment| %>
-  <div class="row comment">
-    <div class="col-xs-1">
-      <%= image_tag("no_photo.gif", width: 50, height: 50) %>
-    </div>
-    <div class="col-xs-11">
-      <p><b><%= comment.user %></b></p>
-      <p><%= comment.text %></p>
-    </div>
-  </div>
+    <%= f.submit "Submit Comment", class: "btn btn-large btn-primary" %>
   <% end %>
 </div>
+
+<hr>
+
+<!-- Posted Comments -->
+<a name="comments"></a>
+<h4>Comments</h4>
+<br>
+<p><%= @presenter.no_comments_message %></p>
+
+<% @post.comments.each do |comment| %>
+<!-- Comment -->
+  <div class="media">
+    <a class="pull-left" href="#">
+      <%= image_tag("no_photo.gif", width: 64, height: 64, class: "media-object") %>
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading"><%= comment.user %>
+        <small><%= comment.created_at.to_formatted_s(:long) %></small>
+      </h4>
+      <%= comment.text %>
+    </div>
+  </div>
+<% end %>
