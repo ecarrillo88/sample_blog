@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-10">
     <h2><%= @post.title %></h2>
-    <p>by <b><%= @post.author %></b> on <b><%= @post.created_at.to_formatted_s(:long) %></b> - <%= link_to pluralize(@post.comments.length, "comment"), "#comments" %></p>
+    <p>by <b><%= last_user_name(@post) %></b> on <b><%= @post.created_at.to_formatted_s(:long) %></b> - <%= link_to pluralize(@post.comments.length, "comment"), "#comments" %></p>
     <div class="row">
       <div class="col-xs-12">
         <p><%= @post.text %></p><br>
