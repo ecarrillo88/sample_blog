@@ -1,9 +1,18 @@
 require 'post_presenter.rb'
 
 class PostsController < ApplicationController
-  def show
+  before_filter :find_post_filter, only: [:show, :edit, :update, :destroy]
+  before_filter :new_comment_filter, only: [:show, :create, :update]
+
+  def find_post_filter
     @post = Post.find(params[:id])
+  end
+
+  def new_comment_filter
     @comment = Comment.new
+  end
+
+  def show
     @presenter = PostPresenter.new(view_context, @post, current_user)
   end
 
@@ -14,7 +23,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     if @post.save
-      @comment = Comment.new
       @presenter = PostPresenter.new(view_context, @post, current_user)
       flash[:success] = "The post has been published!"
       redirect_to @post
@@ -24,12 +32,9 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
-    @comment = Comment.new
     @presenter = PostPresenter.new(view_context, @post, current_user)
     if @post.update_attributes(params[:post])
       flash[:success] = "The post has been updated"
@@ -40,7 +45,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     flash[:danger] = "The post has been deleted"
     redirect_to root_path

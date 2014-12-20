@@ -1,9 +1,18 @@
 require 'image_manager.rb'
 
 class UsersController < ApplicationController
-  def show
-  	@user = User.find(params[:id])
+  before_filter :find_user_filter, except: [:new, :create]
+  before_filter :new_imageManager_filter, only: [:show, :edit, :upload_image]
+
+  def find_user_filter
+    @user = User.find(params[:id])
+  end
+
+  def new_imageManager_filter
     @imageManager = ImageManager.new
+  end
+
+  def show
   end
 
   def new
@@ -22,12 +31,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-    @imageManager = ImageManager.new
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       sign_in @user
       flash[:success] = "The user has been updated"
@@ -38,24 +44,20 @@ class UsersController < ApplicationController
   end
 
   def destroy
-  	@user = User.find(params[:id])
   	@user.destroy
     flash[:success] = "The user has been deleted :("
     redirect_to root_path
   end
 
   def posts_list
-    @user = User.find(params[:id])
     @posts = @user.posts
   end
 
   # Upload image to Cloudinary
   def upload_image
-    @user = User.find(params[:id])
     if !params[:image].nil?
-      imageManager = ImageManager.new
-      imageManager.delete_image(@user.image_id) unless @user.image_id.nil?
-      image_hash = imageManager.upload_image(params[:image])
+      @imageManager.delete_image(@user.image_id) unless @user.image_id.nil?
+      image_hash = @imageManager.upload_image(params[:image])
       @user.update_attribute(:image_id, image_hash['public_id'])
       sign_in @user
       flash[:success] = "The profile image has been updated"
