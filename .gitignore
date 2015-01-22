@@ -4,15 +4,10 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile ~/.gitignore_global
 
-# Ignore bundler config
-/.bundle
-
-# Ignore the default SQLite database.
-/db/*.sqlite3
-
-# Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
-
-# Ignore Cloudinary configuration file
-/config/cloudinary.yml
+/.bundle                    # Bundler config
+/db/*.sqlite3               # Default SQLite database
+/log/*.log                  # Logfiles
+/tmp                        # Tempfiles
+/config/cloudinary.yml      # Cloudinary configuration file
+/config/database.yml        # Database configuration file
+/.project                   # Aptana Studio 3 project file
