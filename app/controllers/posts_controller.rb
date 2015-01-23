@@ -13,7 +13,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @presenter = PostPresenter.new(view_context, @post, current_user)
   end
 
   def new
@@ -23,7 +22,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     if @post.save
-      @presenter = PostPresenter.new(view_context, @post, current_user)
       flash[:success] = "The post has been published!"
       redirect_to @post
     else
@@ -35,7 +33,6 @@ class PostsController < ApplicationController
   end
 
   def update
-    @presenter = PostPresenter.new(view_context, @post, current_user)
     if @post.update_attributes(params[:post])
       flash[:success] = "The post has been updated"
       redirect_to @post

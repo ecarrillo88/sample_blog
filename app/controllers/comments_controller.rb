@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:comment][:id])
     @comment = @post.comments.create(user: params[:comment][:user].upcase, text: params[:comment][:text])
-    @presenter = PostPresenter.new(view_context, @post, current_user)
     if @comment.save
       flash[:info] = "The comment has been published!" 
       redirect_to @post

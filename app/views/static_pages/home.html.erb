@@ -1,11 +1,12 @@
-<% Post.all.reverse.each do |post| %>
-  <!-- First Blog Post -->
-  <h2><%= link_to post.title, post_path(post.id) %></h2>
-  <p class="lead">by <%= link_to(last_user_name(post), "#") %></p> 
-  <p><span class="glyphicon glyphicon-time"></span> Posted on <%= post.created_at.to_formatted_s(:long) %> - <%= link_to pluralize(post.comments.length, "comment"), "#{post_path(post.id)}#comments" %></p>
-  <hr>
-  <p><%= post.text.truncate(600) %></p>
-  <p class="lead"><%= link_to "Read More <span class='glyphicon glyphicon-chevron-right'></span>".html_safe, post_path(post.id), class: "btn btn-primary" %></p>
-  <hr>
+<% @posts.each do |post| %>
+  <% presenter post do |post_presenter| %>
+    <!-- First Blog Post -->
+    <h2><%= link_to post.title, post_path(post.id) %></h2>
+    <p class="lead">by <%= link_to(post_presenter.last_user_name, "#") %></p> 
+    <p><span class="glyphicon glyphicon-time"></span> Posted on <%= post.created_at.to_formatted_s(:long) %> - <%= link_to pluralize(post.comments.length, "comment"), "#{post_path(post.id)}#comments" %></p>
+    <hr>
+    <p><%= post.text.truncate(600) %></p>
+    <p class="lead"><%= link_to "Read More <span class='glyphicon glyphicon-chevron-right'></span>".html_safe, post_path(post.id), class: "btn btn-primary" %></p>
+    <hr>
+  <% end %>
 <% end %>
-
